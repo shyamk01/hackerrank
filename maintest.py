@@ -1,13 +1,8 @@
-numbers1 = [17, 28, 30]
-numbers2 = [99, 16, 8]
-alice=0
-bob=0
+arr = [[1, 2, 3], [4, 5, 6], [9, 8, 9]]
+a = 0
+n = 3
+for i in range(n):
+    a += arr[i][i]
+    a -= arr[i][n-i-1]
 
-for a,b in zip(numbers1,numbers2):
-    if a>b:
-        alice+=1
-    elif a<b:
-        bob+=1
-    else:
-        pass
-print(alice,bob)
+print(abs(a))
