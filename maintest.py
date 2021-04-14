@@ -1,26 +1,13 @@
-def minion_game(s):
-    # your code goes here
-    player1 = 0;
-    player2 = 0;
-    str_len = len(s)
-    for i in range(str_len):
-        if s[i] in "AEIOU":
-            player1 += (str_len) - i
-            print("*"+str(player1))
-        else:
-            player2 += (str_len) - i
-            print(player2)
+numbers1 = [17, 28, 30]
+numbers2 = [99, 16, 8]
+alice=0
+bob=0
 
-    if player1 > player2:
-        print("Kevin", player1)
-    elif player1 < player2:
-        print("Stuart", player2)
-    elif player1 == player2:
-        print("Draw")
+for a,b in zip(numbers1,numbers2):
+    if a>b:
+        alice+=1
+    elif a<b:
+        bob+=1
     else:
-        print("Draw")
-    # The Minion Game in Python - Hacker Rank Solution END
-
-
-if __name__ == '__main__':
-    minion_game("BANANA")
+        pass
+print(alice,bob)
