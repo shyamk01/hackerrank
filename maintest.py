@@ -1,8 +1,17 @@
-arr = [[1, 2, 3], [4, 5, 6], [9, 8, 9]]
-a = 0
-n = 3
-for i in range(n):
-    a += arr[i][i]
-    a -= arr[i][n-i-1]
+arr = [-4, 3, -9, 0, 4, 1]
+plus = 0
+minus = 0
+zero = 0
+lenarr = len(arr)
+for i in arr:
+    if i > 0:
+        plus += 1
+    if i < 0:
+        minus += 1
+    if i == 0:
+        zero += 1
 
-print(abs(a))
+print(str.format('{0:.6f}', plus / lenarr))
+print(str.format('{0:.6f}', minus / lenarr))
+print(str.format('{0:.6f}', zero / lenarr))
+
