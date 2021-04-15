@@ -1,13 +1,11 @@
-s = "hacakaeararanaka"
-match = "hackerrank"
-i = 0
+import re
+from string import ascii_lowercase
 
-for x in s:
-    if i<= len(match)-1:
-        if (match[i] == x):
-            i = i + 1
-
-if i != len(match):
-    print("No")
+s="We promptly judged antique ivory buckles for the next prize"
+s=s.lower()
+alphabet=sorted(set(ascii_lowercase))
+s1=re.findall(r'\w',s)
+if(set(alphabet).issubset(set(s1))):
+    print("Pangrams")
 else:
-    print("Yes")
+    print("Not Pangrams")
