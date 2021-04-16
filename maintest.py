@@ -9,18 +9,18 @@ start= round(time.time() * 1000)
 alphabet = sorted(set(ascii_lowercase))
 enlist = enumerate(alphabet, 1)
 alphdict=dict((j,i) for i,j in enlist)
-ars=[]
-for _, j in groupby(s):
-    sumi=0
-    for i in list(j):
-        sumi =sumi+ int(alphdict[i])
-        ars.append(sumi)
-for a in queries:
-    if a in ars:
-        print("Yes")
+print(alphdict)
+ars=set()
+ctr=1
+for i in range(len(s)):
+    value = alphdict[s[i]]
+    if(i+1!=len(s) and s[i+1]==s[i]):
+        ctr=ctr+1
     else:
-        print("No")
-
+        ctr=1
+    ars.add(ctr*value)
+for a in range(len(queries)):
+    "Yes" if queries[a] in ars else "No"
 end =round(time.time() * 1000)
 
 print("the time taken to execute the program{f}", end-start)
