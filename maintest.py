@@ -1,26 +1,27 @@
-from string import ascii_lowercase
-from collections import Counter
-from itertools import groupby
+a = "11111111111111111111111111111111"
+incr = 1
+flag = 0
+arr = []
+for i in range(1, len(a)):
+    for j in range(1, len(a) + 2):
+        temp1 = incr * j
+        if a[0:temp1] != "" and len(a[0:incr * j]) == incr:
+            val = a[0:temp1]
+            arr.append(val)
+        break
+    incr = incr + 1
 
-s = "abccddde"
-queries=[5,9,7,8,12,5]
-import  time
-start= round(time.time() * 1000)
-alphabet = sorted(set(ascii_lowercase))
-enlist = enumerate(alphabet, 1)
-alphdict=dict((j,i) for i,j in enlist)
-print(alphdict)
-ars=set()
-ctr=1
-for i in range(len(s)):
-    value = alphdict[s[i]]
-    if(i+1!=len(s) and s[i+1]==s[i]):
-        ctr=ctr+1
-    else:
-        ctr=1
-    ars.add(ctr*value)
-for a in range(len(queries)):
-    "Yes" if queries[a] in ars else "No"
-end =round(time.time() * 1000)
-
-print("the time taken to execute the program{f}", end-start)
+for x in arr:
+    str1 = x
+    for j in range(1, len(a)):
+        str1 += str(int(x) + j)
+        if len(str1) >= len(a):
+            #str1 = str1[0:len(a)]
+            break
+    if str1 == a:
+        print(str1)
+        print("Yes " + x)
+        flag = 1
+        break
+if flag == 0:
+    print("No")
