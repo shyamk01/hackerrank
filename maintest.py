@@ -1,22 +1,18 @@
-n=2
-m=6
-import  itertools
-arrs=[]
+import string
+inparr = ['abcdde', 'baccd', 'eeabg']
+#inparr = ['abc', 'abc', 'bc']
+alphabet_string = string. ascii_lowercase
+alphabet_list = list(alphabet_string)
+arr=[]
+for ax in alphabet_list:
+    str=""
+    for x in range(len(inparr)):
+        if ax in inparr[x]:
+            str=str+ax
+        else:
+            str = ""
+            break;
+    if str!="":
+        arr.append(str)
 
-def gcd(a,b):
-    if b==0:
-        return a
-    return gcd(a,a%b)
-
-for i in range(1, m+1):
-    if m%i==0:
-        arrs.append(i)
-print(arrs)
-lst = list(itertools.permutations(arrs,n))
-
-arrgcd=[]
-for i in lst:
-    if gcd(i[0],i[1])==1:
-        arrgcd.append(i)
-
-print(len(arrgcd))
+print(len(arr))
