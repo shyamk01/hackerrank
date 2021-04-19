@@ -1,17 +1,22 @@
+n=2
+m=6
+import  itertools
+arrs=[]
 
+def gcd(a,b):
+    if b==0:
+        return a
+    return gcd(a,a%b)
 
-def diffstr(s):
-    arrs = []
-    for i in range(len(s)-1):
-        if i<=len(s):
-            arrs.append(abs(ord(s[i + 1]) - ord(s[i])))
-    return arrs
-inps="bcxz"
-orgstr=diffstr(inps)
-revstr=diffstr(inps[::-1])
-print(orgstr)
-print(revstr)
-if orgstr==revstr:
-    print("Funny")
-else:
-    print("Not Funny")
+for i in range(1, m+1):
+    if m%i==0:
+        arrs.append(i)
+print(arrs)
+lst = list(itertools.permutations(arrs,n))
+
+arrgcd=[]
+for i in lst:
+    if gcd(i[0],i[1])==1:
+        arrgcd.append(i)
+
+print(len(arrgcd))
