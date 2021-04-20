@@ -1,39 +1,23 @@
-''' Read input from STDIN. Print your output to STDOUT '''
-
-
-# Use input() to read input from STDIN and use print to write your output to STDOUT
-arrstr = set()
-def checkPatienceStatus(viruscompo, inpone):
-    for pone in inpone:
-        k = 0
-        str = ""
-        for i in range(len(pone)):
-            for _ in range(len(viruscompo)):
-                if k <= len(viruscompo) - 1 and pone[i] == viruscompo[k]:
-                    str = str + pone[i]
-                    break
+import re
+def minion_game(s):
+    vow="AEIOU"
+    kevin=[]
+    stuart=[]
+    a=range(0,len(s)+1)
+    for l in a:
+        for j in a:
+            if s[l:j]!= "":
+                if s[l:j][0].lower() in vow.lower():
+                    kevin.append(s[l:j])
                 else:
-                    k = k + 1
+                    stuart.append(s[l:j])
 
-        if pone == str:
-            arrstr.add("POSITIVE")
-        else:
-            arrstr.add("NEGATIVE")
+    if len(kevin)>len(stuart):
+        print("Kevin " + str(len(kevin)))
+    elif len(kevin)<len(stuart):
+        print("Stuart " + str(len(stuart)))
+    else:
+        print("Draw")
 
-    return arrstr
-
-
-def main():
-    viruscompo = input()
-    n = int(input())
-    arr = []
-    for _ in range(n):
-        arr_item = input()
-        arr.append(arr_item)
-    result = checkPatienceStatus(viruscompo, arr)
-    for a in result:
-        print(a)
-
-
-main()
-
+if __name__ == '__main__':
+    minion_game("BANANA")
