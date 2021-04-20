@@ -1,23 +1,40 @@
-import re
-def minion_game(s):
-    vow="AEIOU"
-    kevin=[]
-    stuart=[]
-    a=range(0,len(s)+1)
-    for l in a:
-        for j in a:
-            if s[l:j]!= "":
-                if s[l:j][0].lower() in vow.lower():
-                    kevin.append(s[l:j])
-                else:
-                    stuart.append(s[l:j])
+def checkPatienceStatus(viruscompo, inpone):
+    arrstr = []
+    flag = 0
+    for pone in inpone:
+        k = 0
+        str = ""
+        for i in range(len(pone)):
+            if set(pone).issubset(set(viruscompo)):
+                for _ in range(len(viruscompo)):
+                    if k <= len(viruscompo) - 1 and pone[i] == viruscompo[k]:
+                        str = str + pone[i]
+                        break
+                    else:
+                        k = k + 1
 
-    if len(kevin)>len(stuart):
-        print("Kevin " + str(len(kevin)))
-    elif len(kevin)<len(stuart):
-        print("Stuart " + str(len(stuart)))
-    else:
-        print("Draw")
+        if pone == str:
+            arrstr.append("POSITIVE")
+        elif flag == 0:
+            arrstr.append("NEGATIVE")
+        else:
+            arrstr.append("NEGATIVE")
+    return arrstr
 
-if __name__ == '__main__':
-    minion_game("BANANA")
+
+def main():
+    viruscompo="coronavirus"
+    ipone=set()
+    ipone.add("onarous")
+    print(checkPatienceStatus(viruscompo, ipone))
+    # viruscompo = input()
+    # n = int(input())
+    # arr = []
+    # for _ in range(n):
+    #     arr_item = input()
+    #     arr.append(arr_item)
+    # result = checkPatienceStatus(viruscompo, arr)
+    # [print(a) for a in result]
+
+
+main()
