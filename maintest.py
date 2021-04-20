@@ -1,50 +1,34 @@
-viruscompo = "coronavirus"
-pone = "abcde"  # NEGATIVE
-#pone="crnas" #POSITIVE
-# pone="onarous" #NEGATIVE
 ''' Read input from STDIN. Print your output to STDOUT '''
+    #Use input() to read input from STDIN and use print to write your output to STDOUT
+def checkprime(m, n):
+    arrprime = set()
+    prime = [True for i in range(n + 1)]
+    p = 2
+    while (p * p <= n):
+        if (prime[p] == True):
+            for i in range(p * p, n + 1, p):
+                prime[i] = False
+        p += 1
+    c = 0
+    for p in range(m, n+1):
+        if prime[p]:
+            arrprime.add(p)
 
-
-# Use input() to read input from STDIN and use print to write your output to STDOUT
-
-def checkPatienceStatus(viruscompo, inpone):
-    arrstr = []
-    flag = 0
-    for pone in inpone:
-        k = 0
-        str = ""
-        for i in range(len(pone)):
-            for _ in range(len(viruscompo)):
-                if set(pone).issubset(set(viruscompo)):
-                    flag = 1
-                else:
-                    break
-                if k <= len(viruscompo) - 1 and pone[i] == viruscompo[k] and flag == 1:
-                    str = str + pone[i]
-                    break
-                else:
-                    k = k + 1
-
-        if pone == str:
-            arrstr.append("POSITIVE")
-        elif flag == 0:
-            arrstr.append("NEGATIVE")
-
-        else:
-            arrstr.append("NEGATIVE")
-    return arrstr
-
+    if arrprime == set():
+        print("-1")
+    elif len(arrprime) == 1:
+        print("0")
+    else:
+        min1 = min(arrprime)
+        max1 = max(arrprime)
+        print(max1 - min1)
 
 def main():
-    viruscompo = input()
     n = int(input())
-    arr = []
-    for _ in range(n):
-        arr_item = input()
-        arr.append(arr_item)
-    result = checkPatienceStatus(viruscompo, arr)
-    [print(a) for a in result]
-
+    for _ in range(0,n):
+        lowupp=input()
+        loup=lowupp.split(" ")
+        checkprime(int(loup[0]), int(loup[1]))
 
 main()
 
