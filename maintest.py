@@ -1,32 +1,25 @@
-from itertools import combinations
-def getcorrectsplit(str,n,s):
-    setresult=set()
-    isprint=False
-    perm = combinations(str,n)
-    for i in list(perm):
-        st=""
-        flag=0
-        for j in range(0,n):
-            a = set(i[j])
-            for x in a:
-                if i[j].count(x)>1:
-                    flag=1
-            if flag==0:
-                st = st + i[j]
-        if st==s:
-            setresult.add(i)
-            isprint=True
-    if isprint==True:
-        for i in setresult:
-              print(i)
-        return isprint
+def mincointrev(arrs):
+    arrzero=[]
+    arrstartone=[]
+    for i in range(len(arrs)):
+        if i%2==0:
+            arrzero.append(0)
+            arrstartone.append(1)
+        else:
+            arrzero.append(1)
+            arrstartone.append(0)
 
+    numstartzero = [1 for (x1, x2) in zip(arrzero, arrs) if abs(x1 - x2)==1].count(1)
+    numstartone = [1 for (x1, x2) in zip(arrstartone, arrs) if abs(x1 - x2)==1].count(1)
+    if numstartzero==0 or numstartone==0:
+        print(0)
+    elif numstartzero < numstartone:
+        print(numstartzero)
+    elif numstartone < numstartzero:
+        print(numstartone)
+    else:
+        print(numstartzero)
 
-if __name__=='__main__':
-    s = 'abacdec'
-    str = [s[i: j]
-           for i in range(len(s))
-           for j in range(i + 1, len(s) + 1)]
-    for a in range(len(s)+1):
-        if(getcorrectsplit(str,a,s)):
-            break
+if __name__=="__main__":
+    arrs = [0, 1, 1, 0]
+    mincointrev(arrs)
