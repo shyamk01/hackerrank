@@ -1,34 +1,32 @@
-''' Read input from STDIN. Print your output to STDOUT '''
-    #Use input() to read input from STDIN and use print to write your output to STDOUT
-def checkprime(m, n):
-    arrprime = set()
-    prime = [True for i in range(n + 1)]
-    p = 2
-    while (p * p <= n):
-        if (prime[p] == True):
-            for i in range(p * p, n + 1, p):
-                prime[i] = False
-        p += 1
-    c = 0
-    for p in range(m, n+1):
-        if prime[p]:
-            arrprime.add(p)
+from itertools import combinations
+def getcorrectsplit(str,n,s):
+    setresult=set()
+    isprint=False
+    perm = combinations(str,n)
+    for i in list(perm):
+        st=""
+        flag=0
+        for j in range(0,n):
+            a = set(i[j])
+            for x in a:
+                if i[j].count(x)>1:
+                    flag=1
+            if flag==0:
+                st = st + i[j]
+        if st==s:
+            setresult.add(i)
+            isprint=True
+    if isprint==True:
+        for i in setresult:
+              print(i)
+        return isprint
 
-    if arrprime == set():
-        print("-1")
-    elif len(arrprime) == 1:
-        print("0")
-    else:
-        min1 = min(arrprime)
-        max1 = max(arrprime)
-        print(max1 - min1)
 
-def main():
-    n = int(input())
-    for _ in range(0,n):
-        lowupp=input()
-        loup=lowupp.split(" ")
-        checkprime(int(loup[0]), int(loup[1]))
-
-main()
-
+if __name__=='__main__':
+    s = 'abacdec'
+    str = [s[i: j]
+           for i in range(len(s))
+           for j in range(i + 1, len(s) + 1)]
+    for a in range(len(s)+1):
+        if(getcorrectsplit(str,a,s)):
+            break
