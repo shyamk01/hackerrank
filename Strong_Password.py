@@ -10,7 +10,7 @@ if not re.compile('[a-z]').search(password):
     cnt += 1
 if not re.compile('[A-Z]').search(password):
     cnt += 1
-if not re.compile('[!@#$%^&*()-+]').search(password):
+if not re.compile('[!@#$%^&*()+-]').search(password):
     cnt += 1
 if len(password) < n:
     cnt += 1
