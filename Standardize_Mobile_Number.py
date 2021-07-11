@@ -1,7 +1,7 @@
 def wrapper(f):
     def fun(l):
-        l=map(int,l[-10:])
-        l=sorted(l)
+        res = [int(x[-10:]) for x in l]
+        l=sorted(res)
         l=map(str,l)
         for a in l:
             print("+91 " + a[-10:-5] + " " + a[-5:])
@@ -13,5 +13,5 @@ def sort_phone(l):
 
 
 if __name__ == '__main__':
-    x = ['09191919191', '9100256236', '+919593621456']
+    x = ['08915625469', '+918756954120']
     sort_phone(x)
