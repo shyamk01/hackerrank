@@ -1,0 +1,9 @@
+s='{[]{()}}}{'
+t=list(s)
+cntc=0
+cnts=0
+cntp=0
+cntc=min(t.count("{"),t.count("}"))
+cnts=min(t.count("["),t.count("]"))
+cntp=min(t.count("("),t.count(")"))
+print(cntc+cnts+cntp)
