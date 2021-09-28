@@ -1,6 +1,5 @@
-n=6
-c=[0,1,2,3,4,5]
-def mindist(k):
+
+def mindist(arr,k):
     tx=[]
     min_d=k
     max_d=k
@@ -9,22 +8,26 @@ def mindist(k):
             tx.append(abs(min_d-k))
             break
         min_d=min_d-1
-    while max_d<=len(arr):
+    while max_d<len(arr):
         if arr[max_d]==1:
             tx.append(abs(max_d-k))
             break
         max_d=max_d+1
     return min(tx)
+# Complete the flatlandSpaceStations function below.
 
-arr=[0]*n
-for i in c:
-   arr[i]=1
+def flatlandSpaceStations(n, c):
+    arr=[0]*n
+    for i in c:
+        arr[i]=1
 
-dis=[]
-for i in range(len(arr)):
-    if arr[i]==1:
-        dis.append(0)
-    else:
-        dis.append(mindist(i))
+    dis=[]
+    for i in range(len(arr)):
+        if arr[i]==1:
+            dis.append(0)
+        else:
+            dis.append(mindist(arr,i))
 
-print(max(dis))
+    return max(dis)
+
+print(flatlandSpaceStations(20,[13,1,11,10,6]))
