@@ -2,6 +2,7 @@
 s = "43 65 1 98 99 101"
 #s = "4 2"
 s="1 5 4 3 2 6"
+s="43 65 1 98 99 101"
 s = list(map(int, s.split(" ")))
 k = []
 
@@ -21,17 +22,32 @@ def isSwap(arr):
                 k.append(j + 1)
 
 
-def almostSorted(s):
-    isSwap(s)
-    if len(k) <= 2:
+def almostSorted(arr):
+    n=len(arr)
+    sortedarr = sorted(arr)
+    a = []
+    subarr = []
+    ctr = 0
+    for i in range(n):
+        if arr[i] != sortedarr[i]:
+            ctr += 1
+            a.append(i + 1)
+    print(a)
+    print(ctr)
+    if ctr == 2:
         print("yes")
-        if len(k) == 1:
-            print("swap " + str(k[0]) + " " + str(k[0] + 1))
-        else:
-            print("swap " + str(k[0]) + " " + str(k[1] + 1))
+        print("swap", a[0], a[1], sep=" ")
     else:
-        print("yes")
-        print("reverse " + str(k[0]) + " " + str(k[-1] + 1))
+        for i in range(n):
+            if arr[i] == sortedarr[i]:
+                None
+            else:
+                subarr.append(arr[i])
+        if subarr == sorted(subarr, reverse=True):
+            print("yes")
+            print("reverse", arr.index(subarr[0]) + 1, arr.index(subarr[-1]) + 1, sep=" ")
+        else:
+            print("no")
 
 
 almostSorted(s)
