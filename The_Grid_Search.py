@@ -2,22 +2,27 @@ G = ['7652157548860692421022503', '9283597467877865303553675', '4160389485250089
 p = ['5250', '1457', '8636', '7660', '7848']
 import re
 
-k = -1
+k = 0
 index = -1
-flag = -1
+flag = False
 t = -1
-for i in range(len(G)):
+
+for i in range(k,len(G)):
     if re.search(p[0], G[i]):
         index = [(m.start(0), m.end(0)) for m in re.finditer(p[0], G[i])]
         k = i
         t = 1
+        print(index)
+        for ik in range(len(index)):
+            t = 1
+            for j in range(k + 1, k + len(p)):
+                print(G[j][index[ik][0]:index[ik][1]])
+                print(p[t])
+                if G[j][index[ik][0]:index[ik][1]] == p[t]:
+                    t = t + 1
 
-print(k)
-print(index[0][0])
-
-for j in range(k + 1, k + len(p)):
-    if G[j][index[0][0]:index[0][1]] == p[t]:
-        t=t+1
+    if t == len(p):
+        break
 
 if t == len(p):
     print("YES")
