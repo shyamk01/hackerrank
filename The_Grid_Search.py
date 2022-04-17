@@ -12,12 +12,9 @@ for i in range(k,len(G)):
         index = [(m.start(0), m.end(0)) for m in re.finditer(p[0], G[i])]
         k = i
         t = 1
-        print(index)
         for ik in range(len(index)):
             t = 1
             for j in range(k + 1, k + len(p)):
-                print(G[j][index[ik][0]:index[ik][1]])
-                print(p[t])
                 if G[j][index[ik][0]:index[ik][1]] == p[t]:
                     t = t + 1
 
