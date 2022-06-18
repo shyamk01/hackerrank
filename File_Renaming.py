@@ -4,6 +4,7 @@ old_name="ababa"
 
 # new_name="ccc"
 # old_name="cccc"
+
 count=0
 comb =combinations(old_name,len(new_name))
 for i in list(comb):
